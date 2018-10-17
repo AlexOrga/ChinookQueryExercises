@@ -65,4 +65,14 @@ INNER JOIN Employee e ON e.EmployeeId = c.SupportRepId
 WHERE e.Title = 'Sales Support Agent'
 ORDER BY CustomerName
 
- 
+ --total_invoices_{year}.sql: How many Invoices were there in 2009 and 2011?
+
+ SELECT 
+	Count(*) AS invoices_in_2009
+ FROM Invoice i
+ WHERE i.InvoiceDate LIKE '%2009%'
+
+ Select 
+	COUNT(*) AS invoices_in_2011
+FROM Invoice i
+WHERE i.InvoiceDate LIKE '%2011%'
