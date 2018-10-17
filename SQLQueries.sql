@@ -38,3 +38,16 @@ WHERE e.Title = 'Sales Support Agent'
 SELECT DISTINCT 
 	i.BillingCountry
 FROM Invoice i
+
+-- sales_agent_invoices.sql: Provide a query that shows the invoices associated with each sales agent. 
+-- The resultant table should include the Sales Agent's full name.
+
+SELECT
+	FullName = e.FirstName + '' + e.LastName,
+	i.*
+FROM Employee e
+INNER JOIN Customer c ON c.SupportRepId = e.EmployeeId
+INNER JOIN Invoice i ON i.CustomerId = c.CustomerId
+WHERE e.Title = 'Sales Support Agent'
+ORDER BY FullName
+
