@@ -76,3 +76,15 @@ ORDER BY CustomerName
 	COUNT(*) AS invoices_in_2011
 FROM Invoice i
 WHERE i.InvoiceDate LIKE '%2011%'
+
+-- total_sales_{year}.sql: What are the respective total sales for each of those years?
+
+SELECT
+	SUM(i.Total) as total_sales_2009
+FROM Invoice i
+WHERE i.InvoiceDate LIKE '%2009%'
+
+Select 
+	SUM(i.Total) AS total_sales_in_2011
+FROM Invoice i
+WHERE i.InvoiceDate LIKE '%2011%'
