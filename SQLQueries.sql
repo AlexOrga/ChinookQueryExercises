@@ -26,3 +26,9 @@ FROM Customer c
 INNER JOIN Invoice i
 ON c.CustomerId = i.CustomerId
 WHERE Country = 'Brazil'
+
+-- sales_agents.sql: Provide a query showing only the Employees who are Sales Agents.
+
+SELECT *
+FROM Employee e
+WHERE e.Title = 'Sales Support Agent'
