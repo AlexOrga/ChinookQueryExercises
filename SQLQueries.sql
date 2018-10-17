@@ -104,3 +104,16 @@ SELECT
 	LineItemsPerInvoice = COUNT(*)
 FROM InvoiceLine
 GROUP BY InvoiceId
+
+-- line_item_track.sql: Provide a query that includes the purchased track name with each invoice line item.
+
+SELECT
+	il.InvoiceLineId,
+	TrackName = t.Name,
+	il.InvoiceId,
+	il.TrackId,
+	il.UnitPrice,
+	il.Quantity
+FROM InvoiceLine il
+INNER JOIN Track t ON il.TrackId = t.TrackId
+ORDER BY InvoiceLineId
