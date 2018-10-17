@@ -51,3 +51,18 @@ INNER JOIN Invoice i ON i.CustomerId = c.CustomerId
 WHERE e.Title = 'Sales Support Agent'
 ORDER BY FullName
 
+--invoice_totals.sql: Provide a query that shows the Invoice Total, Customer name, Country 
+-- and Sale Agent name for all invoices and customers.
+
+SELECT
+	CustomerName = c.FirstName + '' + c.LastName,
+	i.Total,
+	SalesAgent = e.FirstName + '' + e.LastName,
+	c.Country
+FROM Customer c
+INNER JOIN Invoice i ON i.CustomerId = c.CustomerId
+INNER JOIN Employee e ON e.EmployeeId = c.SupportRepId
+WHERE e.Title = 'Sales Support Agent'
+ORDER BY CustomerName
+
+ 
