@@ -117,3 +117,19 @@ SELECT
 FROM InvoiceLine il
 INNER JOIN Track t ON il.TrackId = t.TrackId
 ORDER BY InvoiceLineId
+
+-- line_item_track_artist.sql: Provide a query that includes the purchased track name AND artist name with each invoice line item.
+
+SELECT 
+	il.InvoiceLineId,
+	Track = t.Name,
+	Artist = art.Name,
+	il.InvoiceId,
+	il.TrackId,
+	il.UnitPrice,
+	il.Quantity
+FROM InvoiceLine il
+INNER JOIN Track t ON t.TrackId = il.TrackId
+INNER JOIN Album al ON al.AlbumId = t.AlbumId
+INNER JOIN Artist art ON art.ArtistId = al.AlbumId
+ORDER BY il.InvoiceLineId
