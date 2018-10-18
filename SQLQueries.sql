@@ -133,3 +133,11 @@ INNER JOIN Track t ON t.TrackId = il.TrackId
 INNER JOIN Album al ON al.AlbumId = t.AlbumId
 INNER JOIN Artist art ON art.ArtistId = al.AlbumId
 ORDER BY il.InvoiceLineId
+
+-- country_invoices.sql: Provide a query that shows the # of invoices per country. HINT: GROUP BY
+
+SELECT 
+	i.BillingCountry,
+	NumberOfInvoices = COUNT(*)
+FROM Invoice i
+GROUP BY i.BillingCountry
